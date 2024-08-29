@@ -8,7 +8,7 @@ const getHomeHandler = (req,res)=>{
 const getContactHandler = (req,res) =>{
 
 
-res.render("contact" , {heading: 'Get in Touch with Us', subheading: "Feel free to reach out for inquiries, support, or just to say hello. We're here to help!"})
+res.render("Contact" , {heading: 'Get in Touch with Us', subheading: "Feel free to reach out for inquiries, support, or just to say hello. We're here to help!"})
 
 
 }
@@ -16,21 +16,21 @@ res.render("contact" , {heading: 'Get in Touch with Us', subheading: "Feel free 
 // about route
 
 const getAboutHandler = (req, res)=>{
-    res.render('about', {heading: "This is the About section", subheading: "We are here for you!"})
+    res.render('About', {heading: "This is the About section", subheading: "We are here for you!"})
 }
 
 
 // signup page
 
 const getSignupHandler = (req,res)=>{
-    res.render('signup')
+    res.render('Signup')
 }
 
 
 // Login page
 
 const getLoginHandler = (req,res)=>{
-        res.render('login')
+        res.render('Login')
 }
 
 

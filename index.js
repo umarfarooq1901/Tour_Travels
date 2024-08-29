@@ -2,20 +2,27 @@ const express = require('express');
 const path = require('path');
 const xhbs = require('express-handlebars');
 const connectDb = require('./utils/connectDb');
-const bodyParser = require('body-parser');
 const { getContactHandler, getAboutHandler, getHomeHandler, getSignupHandler, getLoginHandler } = require('./controllers/getControllers/pageController');
-const handleUserSignup = require('./controllers/postCoontrollers/userController');
+const bodyParser = require('body-parser');
+const {handleUserSignup, handleUserLogin} = require('./controllers/postCoontrollers/userController');
 const port = 4000;
 const app = express();
+
+
+// db connection call
+connectDb();
 
 // Middlewares
 
 app.use(express.static(path.join(__dirname, "Public")));
 app.use(bodyParser.json());
-connectDb();
+// app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 
-// Eender engine setting
+
+// Render engine setting
 app.set('view engine', 'hbs');
 app.set("views" , path.join(__dirname , "views" , "Pages"))
 
@@ -43,10 +50,12 @@ app.get('/user/login', getLoginHandler);
 
 // post routes
 app.post('/user/signup', handleUserSignup );
-// app.post('/login', );
+app.post('/user/login', handleUserLogin );
+
+
+
 
 // Last route
-
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
