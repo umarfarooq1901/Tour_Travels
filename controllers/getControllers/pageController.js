@@ -1,7 +1,13 @@
 // Home route
 
 const getHomeHandler = (req,res)=>{
-    res.render('index', {heading: 'This is the home page!', subheading: "We are the best organization "})
+    res.render('index', {heading: 'Enjoy Your Vacation With Us', subheading: "Tempor erat elitr rebum at clita diam amet diam et eos erat ipsum lorem sit"})
+}
+
+// Servies page route
+
+const getServicesHandler = (req, res)=>{
+    res.render('Services', {heading: "Services Page", subheading: "Feel free to reach out for inquiries, support, or just to say hello. We're here to help!"})
 }
 
 // contact route
@@ -34,4 +40,4 @@ const getLoginHandler = (req,res)=>{
 }
 
 
-module.exports = {getHomeHandler, getContactHandler, getAboutHandler, getSignupHandler, getLoginHandler}
+module.exports = {getHomeHandler, getContactHandler, getAboutHandler, getSignupHandler, getLoginHandler, getServicesHandler}
