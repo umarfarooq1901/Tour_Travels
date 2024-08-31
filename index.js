@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const xhbs = require('express-handlebars');
 const connectDb = require('./utils/connectDb');
-const { getContactHandler, getAboutHandler, getHomeHandler, getSignupHandler, getLoginHandler, getServicesHandler } = require('./controllers/getControllers/pageController');
+const { getContactHandler, getAboutHandler, getHomeHandler, getSignupHandler, getLoginHandler, getServicesHandler, getPackagesHandler } = require('./controllers/getControllers/pageController');
 const bodyParser = require('body-parser');
 const {handleUserSignup, handleUserLogin} = require('./controllers/postCoontrollers/userController');
 const port = 4000;
@@ -48,6 +48,7 @@ app.get('/contact', getContactHandler);
 app.get('/signup', getSignupHandler);
 app.get('/login', getLoginHandler);
 app.get('/services', getServicesHandler);
+app.get('/packages', getPackagesHandler);
 
 // post routes
 app.post('/user/signup', handleUserSignup );

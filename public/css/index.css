@@ -95,7 +95,57 @@
 } */
  .process-box{
     border: 1px solid #86b817;
+    transition:  all 0.8s ease;
  }
+ .process-box:hover{
+    background-color: #86b817;
+    color: white;
+ }
+
+
+ /* testimonial section */
+
+ .clients-section{
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../assets/blogpic.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+ }
+ .clients-section .card{
+    border: 1px solid #86b817;
+    height: 35vh;
+    transition: all 0.7s ease;
+ }
+ .clients-section .card:hover{
+        background-color: #86b817;
+        color: whitesmoke;
+ }
+
+ /* footer section */
+
+ .footer-list li a{
+            color:white ;
+            text-decoration: none;
+            transition: color 0.7s ease;
+ }
+
+ .footer-list li a:hover{
+    color: #86b817;
+   
+ }
+ .social-icons a i:hover{
+    color: #86b817 !important;
+    font-size: larger !important;
+ }
+ .footer-services-list li{
+    transition: color 0.6s ease;
+ }
+ .footer-services-list li:hover{
+    color: #86b817;
+ }
+ 
 
 
 

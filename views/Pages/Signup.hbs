@@ -1,7 +1,7 @@
 <div class="signup-main container my-5">
             <h1 class="text-center">Signup</h1>
 
-<form method="post" action="/user/signup" class="bg-light rounded my-5 p-5 ">
+<form method="post" action="/user/signup" class="bg-light rounded mt-5 p-5 ">
             <input class="form-control mb-3 " type="text" name="username" placeholder="Enter your username">
             <input class="form-control mb-3" type="email" name="email" placeholder="Enter your email">
             <input class="form-control mb-3" type="tel" name="contact" placeholder="Enter your contact">
@@ -19,6 +19,10 @@
     
         {{/if}}
 
-                <button type="submit" class="btn btn-info">Sig In</button>
+                <button type="submit" class="px-4 py-2 border-0 rounded" style="background-color: #86b817; color:white; ">Register</button>
 </form>
+
+<div class="account-already px-5 ">
+      <p>Already have an account? <span><a href="/login">Login</a></span></p>
+</div>
 </div>
