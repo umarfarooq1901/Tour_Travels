@@ -1,4 +1,7 @@
+.body {
 
+    min-height: 100vh;
+    }
 
 
 /* index.css */
@@ -12,9 +15,87 @@
 }
 
 
+/* about section */
 
-.body {
-
-min-height: 100vh;
+.section-title{
+    color: #86b817;
 }
+.about-section{
+    min-height: 80vh;
+}
+
+.fa-arrow-right{
+   color:#86b817 ; 
+}
+
+
+
+.button-read{
+    background-color: #86b817;
+    transition: background-color 0.5s ease;
+
+   
+}
+.button-read a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.button-read:hover{
+    background-color: #6a9708;
+}
+
+/* services section */
+
+.section-card{
+    transition: background-color 0.7s ease;
+}
+.section-card:hover{
+    background-color:#86b817;
+    color: #f8f8f8;
+}
+.section-card:hover i {
+    color: #f8f8f8 !important; /* Change icon color to white */
+}
+
+
+
+/* package section */
+
+.package-btn{
+    background-color:#86b817;
+    border-radius: 30px 0;
+    color: white;
+    transition: background-color 0.5s ease;
+
+}
+.package-btn:hover{
+        background-color:#6a9708;
+        color: white;
+}
+
+
+/* booking-section */
+
+.booking-main{
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/booking.jpg');
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+
+
+/* process section */
+
+/* .process-icon i {
+    background-color: #86b817 !important;
+    color: white !important;
+    font-size: 18px !important;
+} */
+ .process-box{
+    border: 1px solid #86b817;
+ }
+
+
 

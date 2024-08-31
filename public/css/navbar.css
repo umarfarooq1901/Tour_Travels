@@ -2,9 +2,19 @@
     color: #86b817 !important;
 } */
 
-
+.navbar-main li a{
+    transition: color 0.5s ease !important;
+}
 
 .navbar-main li a:hover{
         color: #86b817 !important;
         border-bottom: 1px solid #86b817 !important ;
+}
+.register-main li a{
+    background-color: #86b817;
+    color:white !important;
+    transition: background-color 0.5s ease !important;
+}
+.register-main li a:hover{
+    background-color: #6a9708 !important;
 }
