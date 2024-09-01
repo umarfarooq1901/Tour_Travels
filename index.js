@@ -5,6 +5,7 @@ const connectDb = require('./utils/connectDb');
 const { getContactHandler, getAboutHandler, getHomeHandler, getSignupHandler, getLoginHandler, getServicesHandler, getPackagesHandler } = require('./controllers/getControllers/pageController');
 const bodyParser = require('body-parser');
 const {handleUserSignup, handleUserLogin, handleUserDelete} = require('./controllers/postCoontrollers/userController');
+const { adminLoginHandler } = require('./controllers/postCoontrollers/adminController');
 const port = 4000;
 const app = express();
 
@@ -41,6 +42,7 @@ app.engine("hbs" , xhbs.engine({
 // app.get('/', (req, res) => {
 //     res.send('hi');
 //   });
+
 // get routes for page rendering
 app.get('/', getHomeHandler);
 app.get('/about', getAboutHandler);
@@ -54,6 +56,13 @@ app.get('/packages', getPackagesHandler);
 app.post('/user/signup', handleUserSignup );
 app.post('/user/login', handleUserLogin );
 app.post('/user/delete', handleUserDelete);
+
+
+//  routes for admin
+app.get('/admin/dashboard', (req, res)=> res.render('AdminDashboard'));
+app.get('/admin/login', (req,res)=> res.render('AdminLogin'));
+app.post('/admin/login',adminLoginHandler);
+
 
 
 
