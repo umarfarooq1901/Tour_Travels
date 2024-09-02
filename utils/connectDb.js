@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
+const {config} = require('dotenv');
+config({path: './.env'});
+
+const dbConnection = process.env.DATABASE_CONNECTION;
 
 const connectDb = async ()=>{
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/Tour_Travels');
-        console.log('Db Connected successfully at port 27017!')
+        await mongoose.connect(dbConnection);
+        console.log('Db Connected successfully!')
     } catch (error) {
         console.log('Error while connecting to the database')
     }

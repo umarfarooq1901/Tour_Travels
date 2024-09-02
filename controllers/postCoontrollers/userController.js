@@ -36,12 +36,13 @@ const handleUserSignup = async (req, res) => {
 
     // Check if user creation was successful
     if (createUser) {
-      return messageHandler(
-        res,
-        200,
-        "Signup",
-        "User Registered Successfully!"
-      );
+      // return messageHandler(
+      //   res,
+      //   200,
+      //   "Signup",
+      //   "User Registered Successfully!"
+      // );
+      return res.redirect('/user/login');
     } else {
       return messageHandler(res, 500, "Signup", "User Registration Failed!");
     }
@@ -61,23 +62,24 @@ const handleUserSignup = async (req, res) => {
 
 const handleUserLogin = async (req, res) => {
   try {
-    const secretkey = process.env.SECRET_KEY;
     const { email, password } = req.body;
-    console.log(email);
+    const secretkey = process.env.SECRET_KEY;
+  
 
     // Input validation
     if (!email || !password) {
       return messageHandler(res, 400, "Login", "All Credentials Required");
     }
 
-    // Find Admin by email
+ 
     const user = await User.findOne({ email });
-    console.log(user);
+  
 
     if (!user) {
-      return messageHandler(res, 400, "Login", "No user Found!");}
+      return messageHandler(res, 400, "Login", "No user Found, Kindly Register!");}
 
       const checkPass = await bcrypt.compare(password, user.password);
+
       if (!checkPass) {
         return messageHandler(res, 400, "Login", "Incorrect Password!");
       }
@@ -93,7 +95,7 @@ const handleUserLogin = async (req, res) => {
 
       if (user.isAdmin) {
        
-      return  res.redirect("/admin/dashboard");
+      return res.redirect("/admin/dashboard");
       
     }
     else{
@@ -106,48 +108,6 @@ const handleUserLogin = async (req, res) => {
   }
 };
 
-
-
-
-// const handleUserLogin = async (req, res) => {
-//   try {
-//     const secretkey = process.env.SECRET_KEY;
-//     const { email, password } = req.body;
-
-//     // Input validation
-//     if (!email || !password) {
-//       return messageHandler(res, 400, "Login", "All Credentials Required");
-//     }
-//     // Check if user exists
-//     const findUser = await User.findOne({ email });
-//     if (!findUser) {
-//       return messageHandler(res, 202, "Login", "User Not Registered!");
-//     }
-
-//     // Compare passwords
-//     const confirmPass = await bcrypt.compare(password, findUser.password);
-//     if (!confirmPass) {
-//       return messageHandler(res, 400, "Login", "Incorrect Password!");
-//     }
-
-//     // Generate JWT token
-//     const createToken = jwt.sign({ _id: findUser._id }, secretkey);
-
-//     // Set the token as a cookie
-//     res.cookie("token", createToken, {
-//       // maxAge: 24*60*60*1000, // 1 day
-//       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-//       httpOnly: true, // Prevents client-side JS from accessing the cookie
-//       secure: true, // Ensures the cookie is only sent over HTTPS
-//     });
-
-//     // Send success message
-//     messageHandler(res, 200, "index", "User LoggedIn Successfully");
-//   } catch (error) {
-//     console.error("Error during user login:", error);
-//     return messageHandler(res, 500, "Login", "Server Error!");
-//   }
-// };
 
 // User Delete Handler
 
