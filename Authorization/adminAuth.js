@@ -17,15 +17,15 @@ const adminAuth = async (req, res, next)=>{
                     if(error){
                         return messageHandler(res, 403, 'Login', 'Access Denied!');
                     }
-                    req.user = decode._id;
 
                     // fetch the user from the database
-                    const user = await User.findById(req.user);
+                    const user = await User.findById(decode._id);
                      
                     if(!user || !user.isAdmin){
                         return messageHandler(res, 401, 'Login', 'Unauthorized to access!')
                     }
-                    // User is an admin, proceed to the next middleware
+                    // User is an admin, populate req.user and proceed
+                    req.user = user;
                     next();
 
                })

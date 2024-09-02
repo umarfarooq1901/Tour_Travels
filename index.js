@@ -14,7 +14,8 @@ const {
 const {
   handleUserSignup, handleUserLogin, handleUserDelete
 } = require('./controllers/postCoontrollers/userController');
-const { adminLoginHandler } = require('./controllers/postCoontrollers/adminController');
+const {getAdminDashboard, adminLogout} = require('./controllers/getControllers/adminController');
+
 
 const port = 4000;
 const app = express();
@@ -47,7 +48,8 @@ app.get('/services', getServicesHandler);
 app.get('/packages', getPackagesHandler);
 
 // Admin Routes
-app.get('/admin/dashboard', adminAuth, (req, res) => res.render('AdminDashboard'));
+app.get('/admin/dashboard', adminAuth, getAdminDashboard);
+app.post('/admin/logout', adminLogout );
 
 // User Routes
 app.get('/user/login', getLoginHandler); // page view

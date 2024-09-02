@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+  
+
 </head>
 <body>
-    <h1>Admin Dashboard</h1>
-    {{#if message}}
-        <p>{{message}}</p>
-    {{/if}}
-    <!-- Dashboard content -->
+   
+
+    <!-- Main Content -->
+    <div class="container">
+     
+        <h1 class="text-center my-5">Welcome, {{adminName}}!</h1>
+
+        <div>
+            <h3 class="my-5 text-center bg-dark text-white rounded p-3">Registered Users</h3>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr>
+                            <td>{{this.username}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.contact}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
 </body>
 </html>
