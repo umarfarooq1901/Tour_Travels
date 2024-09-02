@@ -47,21 +47,30 @@ app.engine("hbs" , xhbs.engine({
 app.get('/', getHomeHandler);
 app.get('/about', getAboutHandler);
 app.get('/contact', getContactHandler);
-app.get('/signup', getSignupHandler);
-app.get('/login', getLoginHandler);
 app.get('/services', getServicesHandler);
 app.get('/packages', getPackagesHandler);
 
-// post routes
+
+//admin Routes
+app.get('/admin/dashboard', (req, res)=> res.render('AdminDashboard'));
+
+
+app.get('/user/login', getLoginHandler);   // page view
+app.post('/user/login', handleUserLogin );   // request execute 
+
+
+
+app.get('/user/signup', getSignupHandler);
 app.post('/user/signup', handleUserSignup );
-app.post('/user/login', handleUserLogin );
+
+
+
+
 app.post('/user/delete', handleUserDelete);
 
 
 //  routes for admin
-app.get('/admin/dashboard', (req, res)=> res.render('AdminDashboard'));
-app.get('/admin/login', (req,res)=> res.render('AdminLogin'));
-app.post('/admin/login',adminLoginHandler);
+
 
 
 

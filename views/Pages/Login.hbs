@@ -6,8 +6,8 @@
 
 <form action="/user/login" method="POST" class="form bg-light rounded my-5">
             
-            <input class="form-control mb-3" type="email" placeholder="Enter your email">       
-            <input class="form-control mb-3" type="password" placeholder="Enter your password">
+            <input class="form-control mb-3" type="email" name="email" placeholder="Enter your email">       
+            <input class="form-control mb-3" type="password" name="password" placeholder="Enter your password">
             {{#if message}}
 
             <div>  <strong>{{message}} </strong> </div>
