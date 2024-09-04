@@ -42,7 +42,7 @@ const handleUserSignup = async (req, res) => {
       //   "Signup",
       //   "User Registered Successfully!"
       // );
-      return res.redirect('/user/login');
+      return res.redirect("/user/login");
     } else {
       return messageHandler(res, 500, "Signup", "User Registration Failed!");
     }
@@ -59,48 +59,45 @@ const handleUserSignup = async (req, res) => {
 
 // User Login Handler
 
-
 const handleUserLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const secretkey = process.env.SECRET_KEY;
-  
 
     // Input validation
     if (!email || !password) {
       return messageHandler(res, 400, "Login", "All Credentials Required");
     }
 
- 
     const user = await User.findOne({ email });
-  
 
     if (!user) {
-      return messageHandler(res, 400, "Login", "No user Found, Kindly Register!");}
-
-      const checkPass = await bcrypt.compare(password, user.password);
-
-      if (!checkPass) {
-        return messageHandler(res, 400, "Login", "Incorrect Password!");
-      }
-
-      const createToken = jwt.sign({ _id: user._id }, secretkey);
-
-      res.cookie("token", createToken, {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-        httpOnly: true,
-        secure: true,
-      });
-    
-
-      if (user.isAdmin) {
-       
-      return res.redirect("/admin/dashboard");
-      
+      return messageHandler(
+        res,
+        400,
+        "Login",
+        "No user Found, Kindly Register!"
+      );
     }
-    else{
-      return res.redirect("/");
 
+    const checkPass = await bcrypt.compare(password, user.password);
+
+    if (!checkPass) {
+      return messageHandler(res, 400, "Login", "Incorrect Password!");
+    }
+
+    const createToken = jwt.sign({ _id: user._id }, secretkey);
+
+    res.cookie("token", createToken, {
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      httpOnly: true,
+      secure: true,
+    });
+
+    if (user.isAdmin) {
+      return res.redirect("/admin/dashboard");
+    } else {
+      return res.redirect("/");
     }
   } catch (error) {
     console.error(error);
@@ -108,17 +105,13 @@ const handleUserLogin = async (req, res) => {
   }
 };
 
-
-
 // handler for userlogout
 
-const handleUserLogout = (req, res)=>{
-
+const handleUserLogout = (req, res) => {
   // Clear the cookie
-      res.clearCookie('token', {path: '/'});
-      res.redirect('/user/login');
-}
-
+  res.clearCookie("token", { path: "/" });
+  res.redirect("/user/login");
+};
 
 // User Delete Handler
 
@@ -160,4 +153,9 @@ const handleUserDelete = async (req, res) => {
   }
 };
 
-module.exports = { handleUserSignup, handleUserLogin, handleUserDelete, handleUserLogout };
+module.exports = {
+  handleUserSignup,
+  handleUserLogin,
+  handleUserDelete,
+  handleUserLogout,
+};
