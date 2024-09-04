@@ -6,6 +6,8 @@ const messageHandler = require("../../utils/messageHandler");
 // handler for fetching details
 const getAdminDashboard = async (req, res) => {
     try {
+
+        const usersCount = await User.countDocuments();
         // Fetch all users from the database
         const users = await User.find().lean(); // `.lean()` returns plain JavaScript objects
         const tours = await Tour.find().lean();
@@ -16,7 +18,7 @@ const getAdminDashboard = async (req, res) => {
             const nonAdminUsers = users.filter(user => !user.isAdmin);
 
             // Render the AdminDashboard with non-admin users
-            res.render('AdminDashboard', { users: nonAdminUsers,tours: tours, adminName: req.user.username, isAdmin: req.user.isAdmin });
+            res.render('AdminDashboard', { users: nonAdminUsers,tours: tours, usersCount, adminName: req.user.username, isAdmin: req.user.isAdmin });
         } else {
             // If the logged-in user is not an admin, handle accordingly
             return messageHandler(res, 403, 'AdminDashboard', 'Access Denied: Admins only.');

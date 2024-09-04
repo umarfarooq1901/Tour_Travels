@@ -4,14 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/adminNav.css">
   
 
 </head>
 <body>
    
 
+   <div class="container home-container">
+        <div class="Home-main row g-3">
+         <div class="card mx-3" style="width: 18rem;">
+    <div class="card-body text-center">
+        <h5 class="card-title">Users</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Total Registered Users</h6>
+        <p class="card-text fw-bold fs-4 ">{{usersCount}} </p>
+        <a href="/admin/users" class="card-link">View Users</a>
+        <a href="/admin/add-user" class="card-link">Add New User</a>
+    </div>
+</div>
+
+             <div class="card mx-3" style="width: 18rem;">
+    <div class="card-body text-center">
+        <h5 class="card-title">Tours</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Available Tours</h6>
+        <p class="card-text fw-bold fs-4 ">{{toursCount}} 3</p>
+        <a href="/admin/tours" class="card-link">View All Tours</a>
+        <a href="/admin/add-tour" class="card-link">Add New Tour</a>
+    </div>
+</div>
+
+                         <div class="card mx-3" style="width: 18rem;">
+    <div class="card-body text-center">
+        <h5 class="card-title">Bookins</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Total Bookings</h6>
+        <p class="card-text fw-bold fs-4 ">{{toursCount}} 3</p>
+        <a href="/admin/tours" class="card-link">View All Tours</a>
+        <a href="/admin/add-tour" class="card-link">Add New Tour</a>
+    </div>
+</div>
+
+        </div>
+   </div>
+
     <!-- Main Content -->
-    <div class="container">
+    {{!-- <div class="container">
      
         <h1 class="text-center my-5">Welcome, {{adminName}}!</h1>
 
@@ -40,7 +76,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> --}}
 
 
 {{!-- tours section --}}

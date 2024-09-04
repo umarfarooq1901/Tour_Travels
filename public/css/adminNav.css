@@ -1,0 +1,117 @@
+/* Side Navigation */
+.side-nav {
+    width: 20vw;
+    background-color: #86b817;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    padding-top: 20px;
+}
+
+.navbar-list li {
+    list-style: none;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-list li:hover {
+    background-color: #a8b817;
+    border-radius: 10px;
+}
+
+.navbar-list li a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Main Container */
+.home-container {
+    margin-left: 21vw;
+    padding: 20px;
+    width: calc(100% - 21vw);
+}
+
+/* Responsive Cards */
+.card {
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Card Body */
+.card-body {
+    padding: 20px;
+}
+/* Card Title */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Card Subtitle */
+.card-subtitle {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #6c757d;
+}
+
+/* Card Text */
+.card-text {
+    font-size: 1rem;
+    color: #495057;
+}
+
+/* Card Links */
+.card-link {
+    font-size: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover {
+    color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .side-nav {
+        width: 60vw;
+    }
+
+    .home-container {
+        margin-left: 61vw;
+        width: calc(100% - 61vw);
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .side-nav {
+        width: 100vw;
+        position: relative;
+        height: auto;
+    }
+
+    .home-container {
+        margin-left: 0;
+        width: 100%;
+    }
+}
