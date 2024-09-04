@@ -1,7 +1,10 @@
 // Home route
 
 const getHomeHandler = (req,res)=>{
-    res.render('index', {heading: 'Enjoy Your Vacation With Us', subheading: "Creating Memorable Journeys, One Trip at a Time"})
+
+    const token = req.cookies['token'];
+    const isLogged = !!token; //returns true if the token is present else returns false
+    res.render('index', {isLogged, heading: 'Enjoy Your Vacation With Us', subheading: "Creating Memorable Journeys, One Trip at a Time"})
 }
 
 // Servies page route

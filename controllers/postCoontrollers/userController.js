@@ -109,6 +109,17 @@ const handleUserLogin = async (req, res) => {
 };
 
 
+
+// handler for userlogout
+
+const handleUserLogout = (req, res)=>{
+
+  // Clear the cookie
+      res.clearCookie('token', {path: '/'});
+      res.redirect('/user/login');
+}
+
+
 // User Delete Handler
 
 const handleUserDelete = async (req, res) => {
@@ -149,4 +160,4 @@ const handleUserDelete = async (req, res) => {
   }
 };
 
-module.exports = { handleUserSignup, handleUserLogin, handleUserDelete };
+module.exports = { handleUserSignup, handleUserLogin, handleUserDelete, handleUserLogout };

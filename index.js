@@ -12,9 +12,12 @@ const {
   getPackagesHandler
 } = require('./controllers/getControllers/pageController');
 const {
-  handleUserSignup, handleUserLogin, handleUserDelete
+  handleUserSignup, handleUserLogin, handleUserDelete,
+  handleUserLogout
 } = require('./controllers/postCoontrollers/userController');
 const {getAdminDashboard, adminLogout} = require('./controllers/getControllers/adminController');
+const multimid = require('./middleware/multer');
+const { handleCreateTour } = require('./controllers/postCoontrollers/tourController');
 
 
 const port = 4000;
@@ -54,9 +57,14 @@ app.post('/admin/logout', adminLogout );
 // User Routes
 app.get('/user/login', getLoginHandler); // page view
 app.post('/user/login', handleUserLogin); // request execute
+app.post('/user/logout', handleUserLogout);  // route for userlogout
 
 app.get('/user/signup', getSignupHandler);
 app.post('/user/signup', handleUserSignup);
+
+
+// routes for Tour packages 
+app.post('/tour/createTour',adminAuth, multimid, handleCreateTour);
 
 // Protect the user deletion route with userAuth middleware
 app.post('/user/delete', userAuth, handleUserDelete);

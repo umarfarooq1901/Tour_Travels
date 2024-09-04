@@ -48,14 +48,19 @@
       </ul>
 
 
-      <ul class="navbar-nav register-main">
-        <li class="nav-item">
-          <a class="nav-link px-4 rounded-pill fw-bold" href="/user/signup">Register</a>
-        </li>
-         {{!-- <li class="nav-item">
-          <a class="nav-link" href="/user/login">Login</a>
-        </li> --}}
-      </ul>
+        <ul class="navbar-nav register-main">
+           <li class="nav-item">
+              {{#if isLogged}}
+                <form action="/user/logout" method="POST">
+                  <button type="submit" class="nav-link text-white fw-bold border-0 rounded-pill py-2 px-4" style="background-color: #86b817;">Logout</button>
+                </form>
+                {{else}}
+                  <a class="nav-link px-4 rounded-pill fw-bold" href="/user/signup">Register</a>
+              {{/if}}
+              </li>
+            </ul>
+
+
     </div>
   </div>
 </nav>
