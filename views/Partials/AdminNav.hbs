@@ -14,11 +14,23 @@
             <h3 class="text-white text-center my-5">Admin Dashboard</h3>
             <hr>
             <ul class="navbar-list">
-                <li><span><i class="fa-solid fa-house-chimney fa-lg"></i></span><a href="admin/home">Home</a></li>
+                <li><span><i class="fa-solid fa-house-chimney fa-lg"></i></span><a href="/admin/dashboard">Home</a></li>
                 <li><span><i class="fa-solid fa-user fa-lg"></i></span><a href="admin/profile">Profile</a></li>
                 <li><span><i class="fa-solid fa-users fa-lg"></i></span><a href="admin/users">Users</a></li>
                 <li><span><i class="fa-solid fa-mountain-sun fa-lg"></i></span><a href="admin/tours">Tours</a></li>
                 <li><span><i class="fa-solid fa-calendar-week fa-lg"></i></span><a href="admin/bookings">Bookings</a></li>
+            </ul>
+
+            <ul >
+                <li style="list-style: none;">
+                      <form action="/admin/logout" method="POST">
+                            <button type="submit"  class="nav-link text-white fw-bold border-0 rounded-pill py-2 px-4" style="background-color: #557a05d3; ">Logout</button>
+                      </form>
+                
+                </form>
+                </li>
+             
+                
             </ul>
           
         </nav>
