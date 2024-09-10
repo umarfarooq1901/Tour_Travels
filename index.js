@@ -24,6 +24,7 @@ const {
 const {
   getAdminDashboard,
   adminLogout,
+  getUsersDetails,
 } = require("./controllers/getControllers/adminController");
 const multimid = require("./middleware/multer");
 const {
@@ -70,6 +71,8 @@ app.get("/packages", getPackagesHandler);
 // Admin Routes
 app.get("/admin/dashboard", adminAuth, getAdminDashboard);
 app.post("/admin/logout", adminLogout);
+app.get('/admin/dashboard/users', adminAuth, getUsersDetails);
+
 
 // User Routes
 app.get("/user/login", getLoginHandler); // page view
@@ -77,7 +80,7 @@ app.post("/user/login", handleUserLogin); // request execute
 app.get("/user/signup", getSignupHandler);
 app.post("/user/signup", handleUserSignup);
 // Protect the user deletion route with userAuth middleware
-app.delete("/user/delete", userAuth, handleUserDelete);
+app.delete("/user/delete/:_id", adminAuth, handleUserDelete);
 app.post("/user/logout", handleUserLogout); // route for userlogout
 
 // routes for Tours

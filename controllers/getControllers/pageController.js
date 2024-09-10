@@ -71,6 +71,13 @@ const getLoginHandler = (req, res) => {
   res.render("Login");
 };
 
+
+// Admin pages
+
+// UsersPage
+
+
+
 module.exports = {
   getHomeHandler,
   getContactHandler,

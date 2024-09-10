@@ -114,44 +114,27 @@ const handleUserLogout = (req, res) => {
 };
 
 // User Delete Handler
-
 const handleUserDelete = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
+    const { _id } = req.params;
+
+    // Find the user by ID
+    const user = await User.findById(_id);
 
     if (!user) {
-      return messageHandler(res, 404, "Signup", "User Not Found!");
-    }
-    //  verifyPassword
-    const verifyPassword = await bcrypt.compare(password, user.password);
-    if (!verifyPassword) {
-      return messageHandler(res, 401, "Signup", "Incorrect Password!");
+      return res.status(404).json({ status: 'error', message: "User Not Found!" });
     }
 
-    // Delete user
+    // Delete the user by ID
+    await User.findByIdAndDelete(_id);
 
-    await User.findByIdAndDelete(user._id);
-
-    return messageHandler(
-      res,
-      200,
-      "Signup",
-      "User Account Deleted Successfully!"
-    );
+    return res.status(200).json({ status: 'success', message: "User Account Deleted Successfully!" });
   } catch (error) {
-    console.log(
-      "Error occur while deleting the user, please try again later",
-      error
-    );
-    return messageHandler(
-      res,
-      500,
-      "Login",
-      "An error occurred, please try again later."
-    );
+    console.error("Error occurred while deleting the user:", error);
+    return res.status(500).json({ status: 'error', message: "An error occurred, please try again later." });
   }
 };
+
 
 module.exports = {
   handleUserSignup,

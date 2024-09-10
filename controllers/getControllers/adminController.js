@@ -8,17 +8,11 @@ const getAdminDashboard = async (req, res) => {
     try {
 
         const usersCount = await User.countDocuments();
-        // Fetch all users from the database
-        const users = await User.find().lean(); // `.lean()` returns plain JavaScript objects
-        const tours = await Tour.find().lean();
-
         // Check if the logged-in user is an admin
         if (req.user.isAdmin) {
-            // Filter out admin users
-            const nonAdminUsers = users.filter(user => !user.isAdmin);
 
             // Render the AdminDashboard with non-admin users
-            res.render('AdminDashboard', { users: nonAdminUsers,tours: tours, usersCount, adminName: req.user.username, isAdmin: req.user.isAdmin });
+            res.render('AdminDashboard', {usersCount, adminName: req.user.username, isAdmin: req.user.isAdmin });
         } else {
             // If the logged-in user is not an admin, handle accordingly
             return messageHandler(res, 403, 'AdminDashboard', 'Access Denied: Admins only.');
@@ -28,6 +22,31 @@ const getAdminDashboard = async (req, res) => {
         return messageHandler(res, 500, 'AdminDashboard', "Unable to load dashboard!");
     }
 }
+
+
+// admin users page
+
+const getUsersDetails = async (req, res)=>{
+    try {
+          // Fetch all users from the database
+          const users = await User.find().lean(); // `.lean()` returns plain JavaScript objects
+          if(req.user.isAdmin){
+              const nonAdminUsers = users.filter(user=> !user.isAdmin);
+              res.render('AdminUsers', {users: nonAdminUsers, isAdmin: req.user.isAdmin});
+
+          }
+          else{
+            return messageHandler(res, 403, 'AdminUsers', "Access Denied: Admins Only!")
+          }
+        
+    } catch (error) {
+        console.log(error);
+        return messageHandler(res, 500, 'AdminUsers', "Unable to load this Pages!");
+        
+    }
+
+   
+  }
 
 // handler for log-out
 
@@ -39,4 +58,4 @@ const adminLogout = (req, res)=>{
     res.redirect('/user/login')
 };
 
-module.exports = {getAdminDashboard, adminLogout};
+module.exports = {getAdminDashboard,getUsersDetails, adminLogout};

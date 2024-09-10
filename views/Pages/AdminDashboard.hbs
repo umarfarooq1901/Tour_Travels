@@ -1,50 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/adminNav.css">
-  
-
+    <link rel="stylesheet" href="/css/adminNav.css">
 </head>
+
 <body>
-   
+    <div class="main-content">
+        <div class="container home-container">
+            <div class="Home-main row g-3">
+                <!-- Card 1: Users -->
+                <div class="card mx-3" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Users</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Registered Users</h6>
+                        <p class="card-text fw-bold fs-4 ">{{usersCount}}</p>
+                        <a href="/admin/dashboard/users" class="card-link">View Users</a>
+                        <a href="/admin/add-user" class="card-link">Add New User</a>
+                    </div>
+                </div>
 
-   <div class="container home-container">
-        <div class="Home-main row g-3">
-         <div class="card mx-3" style="width: 18rem;">
-    <div class="card-body text-center">
-        <h5 class="card-title">Users</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Total Registered Users</h6>
-        <p class="card-text fw-bold fs-4 ">{{usersCount}} </p>
-        <a href="/admin/users" class="card-link">View Users</a>
-        <a href="/admin/add-user" class="card-link">Add New User</a>
-    </div>
-</div>
+                <!-- Card 2: Tours -->
+                <div class="card mx-3" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Tours</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Available Tours</h6>
+                        <p class="card-text fw-bold fs-4 ">{{toursCount}}</p>
+                        <a href="/admin/tours" class="card-link">View All Tours</a>
+                        <a href="/admin/add-tour" class="card-link">Add New Tour</a>
+                    </div>
+                </div>
 
-             <div class="card mx-3" style="width: 18rem;">
-    <div class="card-body text-center">
-        <h5 class="card-title">Tours</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Available Tours</h6>
-        <p class="card-text fw-bold fs-4 ">{{toursCount}} 3</p>
-        <a href="/admin/tours" class="card-link">View All Tours</a>
-        <a href="/admin/add-tour" class="card-link">Add New Tour</a>
-    </div>
-</div>
-
-                         <div class="card mx-3" style="width: 18rem;">
-    <div class="card-body text-center">
-        <h5 class="card-title">Bookins</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Total Bookings</h6>
-        <p class="card-text fw-bold fs-4 ">{{toursCount}} 3</p>
-        <a href="/admin/tours" class="card-link">View All Tours</a>
-        <a href="/admin/add-tour" class="card-link">Add New Tour</a>
-    </div>
-</div>
-
+                <!-- Card 3: Bookings -->
+                <div class="card mx-3" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Bookings</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Bookings</h6>
+                        <p class="card-text fw-bold fs-4 ">{{bookingsCount}}</p>
+                        <a href="/admin/bookings" class="card-link">View All Bookings</a>
+                    </div>
+                </div>
+            </div>
         </div>
-   </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
 
     <!-- Main Content -->
     {{!-- <div class="container">
@@ -81,6 +89,4 @@
 
 {{!-- tours section --}}
 
-        
-</body>
-</html>
+
