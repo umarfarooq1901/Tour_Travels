@@ -65,6 +65,35 @@ body {
 .card-link:hover {
     color: #557a05;
 }
+/* Custom Styles for Users Section */
+.usersContainer {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.table-dark th, .table-dark td {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
 
 @media (max-width: 767px) {
     .Home-main {
@@ -90,96 +119,15 @@ body {
     }
 }
 
-
-.navbar {
-    background-color: #86b817;
-    padding: 10px;
+.navbar-main li a{
+    transition: color 0.5s ease !important;
 }
 
-.navbar-brand {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: none;
+.navbar-main li a:hover{
+        color: #86b817 !important;
+        border-bottom: 1px solid #86b817 !important ;
 }
 
-.navbar-toggler {
-    border: none;
-    background: transparent;
-}
 
-.navbar-toggler-icon {
-    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"%3E%3Cpath stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"%3E%3C/path%3E%3C/svg%3E');
-}
 
-.navbar-nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
 
-.nav-item {
-    margin: 5px 0;
-}
-
-.nav-link {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    display: block;
-}
-
-.nav-link:hover {
-    background-color: #557a05;
-    border-radius: 5px;
-}
-
-.navbar-main {
-    display: flex;
-    flex-direction: column;
-}
-
-.navbar-nav .nav-link.active {
-    background-color: #557a05;
-    color: #fff;
-}
-
-.navbar-toggler {
-    margin-left: auto;
-}
-
-/* Responsive Styling */
-@media (min-width: 992px) {
-    .navbar-nav {
-        flex-direction: row;
-    }
-
-    .nav-item {
-        margin: 0 10px;
-    }
-
-    .navbar-toggler {
-        display: none;
-    }
-}
-
-@media (max-width: 991px) {
-    .navbar-nav {
-        display: none;
-    }
-
-    .navbar-collapse.show .navbar-nav {
-        display: flex;
-    }
-}
-
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-}
-
-@media (min-width: 992px) {
-    .container {
-        padding: 0;
-    }
-}
